@@ -1,6 +1,8 @@
 import RestCard from "./RestCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { MAIN_URL } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 
 
@@ -14,7 +16,7 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.8744775&lng=75.37036619999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+    const data = await fetch(MAIN_URL)
     const json = await data.json()
     setListRest(json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     setFilterRest(json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
@@ -57,7 +59,7 @@ const Body = () => {
       <div className="restCardContainer">
         {
           filterRest.map((rest) => (
-            <RestCard key={rest.info.id} resData={rest} />
+            <Link key={rest.info.id} to = {'restaurant/' + rest.info.id}><RestCard resData={rest} /></Link>
           ))
         }
       </div>
