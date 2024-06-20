@@ -8,4 +8,11 @@ export const MENU_URL = 'https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_M
 
 export const STAR_URL = "https://img.icons8.com/?size=100&id=enP6M_u0BXV3&format=png&color=40C057"
 
+const latitude = '12.9716';
+const longitude = '77.5946';
+
+export const GROCERY_URL = `https://www.swiggy.com/api/instamart/home?clientId=INSTAMART-APP&lat=${latitude}&lng=${longitude}`;
+
+export const GROCERY_IMAGE = 'https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_294/'
+
 export default RESTIMG_URL;

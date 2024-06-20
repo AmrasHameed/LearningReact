@@ -1,8 +1,10 @@
 import RestCard from "./RestCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import Offline from "./Offline";
 import { MAIN_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 
@@ -10,6 +12,8 @@ const Body = () => {
   const [listRest, setListRest] = useState([])
   const [filterRest, setFilterRest] = useState([])
   const [searchText, setSearchText] = useState('')
+
+  const onlineStatus = useOnlineStatus()
 
   useEffect(() => {
     fetchData();
@@ -21,6 +25,9 @@ const Body = () => {
     setListRest(json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     setFilterRest(json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
   }
+  
+  console.log(onlineStatus)
+  if(onlineStatus === false) return <Offline />
 
   if(listRest.length === 0) {
     return <Shimmer/>

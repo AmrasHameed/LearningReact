@@ -26,6 +26,10 @@ a {
   height: auto;
 }
 
+.logo:hover{
+  transform: scale(0.95);
+}
+
 .nav-items {
   text-align: right;
 }
@@ -50,6 +54,10 @@ a {
   transition: color 0.3s;
 }
 
+.nav-items ul li.selected {
+  color: #e68403; 
+}
+
 .nav-items > ul > li > a {
   text-decoration: none; 
   color: inherit; 
@@ -59,6 +67,7 @@ a {
 
 .nav-items > ul > li:hover {
   color: #e68403;
+  transform: scale(0.90);
 }
 
 .restCard {
@@ -116,6 +125,7 @@ a {
   border-style: none;
   border-radius: 5px;
 }
+
 
 .search {
   display: flex;
@@ -191,6 +201,7 @@ a {
 
 .login:hover {
   background-color: #a14901;
+  transform: scale(0.95);
 }
 
 .restaurant-card {
@@ -308,3 +319,90 @@ a {
   font-size: 20px;
   font-weight: bolder;
 }
+
+.userDetail {
+  display: flex;
+  flex-direction:column;
+  margin: 20px;
+  padding: 20px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  width: 90%;
+  height: 120px;
+  line-height: 0;
+  font-size: 15px;
+}
+
+.userDetail:hover{
+  color: #ffffff;
+  background-color: #fc8019;
+  transform: scale(0.95);
+}
+
+.offlineMessage {
+  font-size: 36px;
+  color: transparent;
+  background-image: linear-gradient(to left, red, rgb(194, 184, 184), red, rgb(190, 177, 177), red, rgb(190, 177, 177), red, rgb(190, 177, 177), red);
+  background-clip: text;
+  -webkit-background-clip: text; /* For older Safari versions */
+  background-size: 200% 100%; /* Try different background sizes */
+  animation: moveColor 5s linear infinite alternate;
+}
+
+@keyframes moveColor {
+  0% {
+    background-position: 0 0; 
+  }
+  100% {
+    background-position: 100% 0; 
+  }
+}
+
+.grocDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 20px;
+}
+
+.grocDiv:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.grocImage {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.grocName {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.grocery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.instamart-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column; 
+}
+
