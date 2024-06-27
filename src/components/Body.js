@@ -34,13 +34,13 @@ const Body = () => {
   }
 
   return (
-    <div className="main">
-      <div className="search">
-        <input type="text" placeholder="Search..." value={searchText} onChange={(e)=>{
+    <div>
+      <div className="flex justify-center items-center m-5">
+        <input className="w-[100%] p-2.5 border-2 border-t-black border-b-black rounded-l-full shadow-lg" type="text" placeholder="Search..." value={searchText} onChange={(e)=>{
           setSearchText(e.target.value)
         }}/>
-        <span>
-          <button className="searchBtn" onClick={()=>{
+        <span className="flex">
+          <button className="px-5 py-2.5 border-2 border-t-black border-b-black rounded-r-full bg-orange-500 text-white shadow-lg" onClick={()=>{
             const filterRes = listRest.filter((rest) => {
               const regex = new RegExp(searchText, 'i') 
               return regex.test(rest.info.name)
@@ -51,19 +51,19 @@ const Body = () => {
           }}>Search</button>
         </span>
       </div>
-      <button className="filterRating" onClick={() => {
+      <button className="p-1 border-2 border-black h-10 rounded-full inline-block text-center mx-5 my-1" onClick={() => {
         const filterRes = listRest.filter((rest) => rest.info.avgRating >= 4.3)
         setFilterRest(filterRes)
       }}>
         Top Rated Restaurant
       </button>
-      <button className="filterRating" onClick={() => {
+      <button className="p-1 border-2 border-black h-10 rounded-full inline-block text-center mx-5 my-1" onClick={() => {
         const filterRes = listRest.filter((rest) => rest.info.sla.deliveryTime < 20)
         setFilterRest(filterRes)
       }}>
         Delivery in less than 20 min
       </button>
-      <div className="restCardContainer">
+      <div className="flex justify-around flex-wrap gap-5 p-5">
         {
           filterRest.map((rest) => (
             <Link key={rest.info.id} to = {'restaurant/' + rest.info.id}><RestCard resData={rest} /></Link>

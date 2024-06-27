@@ -3,27 +3,47 @@ import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
 
 const Header = () => {
-  const [btnName, setBtnName] = useState('Login');
-  const [selectedItem, setSelectedItem] = useState('Home');
-
-  const handleItemClick = (item) => {
-    setSelectedItem(item);
-  };
+  const [btnName, setBtnName] = useState("Login");
 
   return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={LOGO_URL} alt="Logo" />
+    <div className="flex justify-between items-center p-2.5 bg-white rounded-md shadow-lg">
+      <div className="flex-1">
+        <img
+          className="w-[170px] h-auto hover:scale-95"
+          src={LOGO_URL}
+          alt="Logo"
+        />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li className={selectedItem === 'Home' ? 'selected' : ''}><Link to="/" onClick={() => handleItemClick('Home')}>Home</Link></li>
-          <li className={selectedItem === 'About' ? 'selected' : ''}><Link to="/about" onClick={() => handleItemClick('About')}>About us</Link></li>
-          <li className={selectedItem === 'Restaurants' ? 'selected' : ''}>Restaurants</li>
-          <li className={selectedItem === 'Contact' ? 'selected' : ''}><Link to="/contact" onClick={() => handleItemClick('Contact')}>Contact</Link></li>
-          <li className={selectedItem === 'Instamart' ? 'selected' : ''}><Link to="/instamart" onClick={() => handleItemClick('Instamart')}>Instamart</Link></li>
-          <li className={selectedItem === 'Cart' ? 'selected' : ''}>Cart</li>
-          <li><button className="login" onClick={() => setBtnName(btnName === 'Login' ? 'Logout' : 'Login')}>{btnName}</button></li>
+      <div className="text-right">
+        <ul className="flex justify-end align-middle m-0 p-0">
+          <li className="my-5 p-2.5 font-light font-lucida text-lg text-gray-900 hover:text-orange-500">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="my-5 p-2.5 font-light font-lucida text-lg text-gray-900 hover:text-orange-500">
+            <Link to="/about">About us</Link>
+          </li>
+          <li className="my-5 p-2.5 font-light font-lucida text-lg text-gray-900 hover:text-orange-500">
+            <Link to={"/"}>Restaurants</Link>
+          </li>
+          <li className="my-5 p-2.5 font-light font-lucida text-lg text-gray-900 hover:text-orange-500">
+            <Link to="/contact">Contact</Link>
+          </li>
+          <li className="my-5 p-2.5 font-light font-lucida text-lg text-gray-900 hover:text-orange-500">
+            <Link to="/instamart">Instamart</Link>
+          </li>
+          <li className="my-5 p-2.5 font-light font-lucida text-lg text-gray-900 hover:text-orange-500">
+            <Link to={"/"}>Cart</Link>
+          </li>
+          <li className="my-5 p-1 text-lg">
+            <button
+              className="px-2.5 py-1 text-white bg-orange-500 rounded-full hover:text-orange-500 hover:bg-white hover:border-2 hover:border-orange-500"
+              onClick={() =>
+                setBtnName(btnName === "Login" ? "Logout" : "Login")
+              }
+            >
+              {btnName}
+            </button>
+          </li>
         </ul>
       </div>
     </div>

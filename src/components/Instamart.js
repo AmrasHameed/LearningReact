@@ -20,9 +20,9 @@ const Instamart = () => {
     if(!grocery.length) return <Shimmer />
 
     return (
-        <div className="instamart-container">
+        <div className="flex flex-col p-5">
             <h4>SHOP BY CATEGORY</h4>
-            <div className="grocery-grid">
+            <div className="flex flex-wrap gap-5">
                 {grocery.map(item => (
                     <div  key={item.nodeId}>
                         <GroceryCard data={item} />
