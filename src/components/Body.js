@@ -13,7 +13,7 @@ const Body = () => {
   const [filterRest, setFilterRest] = useState([])
   const [searchText, setSearchText] = useState('')
 
-  const onlineStatus = useOnlineStatus()
+  const onlineStatus = useOnlineStatus() 
 
   useEffect(() => {
     fetchData();
