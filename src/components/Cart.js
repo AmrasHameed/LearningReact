@@ -1,17 +1,21 @@
-import { useDispatch } from "react-redux";
-import { ITEMIMG_URL } from "../utils/constants"
-import { addItem } from "../utils/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { ITEMIMG_URL } from "../utils/constants";
+import { clearCart } from "../utils/cartSlice";
 
-const ItemList = (props) => {
-    const { items } = props;
+const Cart = () => {
+    const cartItems = useSelector((store)=>store.cart.items)
     const dispatch = useDispatch()
-    const handleAddItem = (item) => {
-        dispatch(addItem(item))
+    const handleClearCart = () => {
+        dispatch(clearCart())
     }
-
-    return (
-        <div>
-            {items.map((item) => {
+    return(
+        <div className="w-6/12 m-auto">
+            <div className="relative text-center m-3 p-3 bg-gray-100 rounded-lg">
+                <h1 className="text-2xl">Cart</h1>
+                <button className="bg-orange-500 p-2 m-2 rounded-lg text-white hover:bg-white hover:text-orange-500 hover:border border-orange-500" onClick={handleClearCart}>Clear Cart</button>
+            </div>
+            {cartItems.length === 0 ? <></> :
+            cartItems.map((item) => {
                 return (
                     <div key={item.card.info.id} className="flex items-center justify-between text-left p-2 m-2 rounded-xl bg-gray-100">
                         <div>
@@ -25,19 +29,12 @@ const ItemList = (props) => {
                             {item.card.info.imageId && 
                                 <img src={ITEMIMG_URL + item.card.info.imageId} className="rounded-2xl w-[150px] h-[140px] object-cover" />
                             }
-                            <button className=" absolute -bottom-2 left-1/2 transform -translate-x-1/2 py-2 px-8 bg-white text-green-500 rounded-lg border border-gray-200 shadow-xl hover:bg-gray-200" onClick={()=>handleAddItem(item)}>
-                                <span className="font-bold font-sans text-lg">ADD</span> 
-                            </button>
                         </div>
                     </div>
                 );
             })}
         </div>
-    );
+    )
 }
 
-export default ItemList;
-
-
-
-export default ItemList
+export default Cart
