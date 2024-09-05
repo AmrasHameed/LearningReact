@@ -14,7 +14,7 @@ const Cart = () => {
                 <h1 className="text-2xl">Cart</h1>
                 <button className="bg-orange-500 p-2 m-2 rounded-lg text-white hover:bg-white hover:text-orange-500 hover:border border-orange-500" onClick={handleClearCart}>Clear Cart</button>
             </div>
-            {cartItems.length === 0 ? <></> :
+            {cartItems.length === 0 ? <h1 className="text-center text-2xl p-2 m-2 text-red-600">Cart is Empty</h1> :
             cartItems.map((item) => {
                 return (
                     <div key={item.card.info.id} className="flex items-center justify-between text-left p-2 m-2 rounded-xl bg-gray-100">
